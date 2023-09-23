@@ -64,11 +64,21 @@ public class ATM {
         }
     }
 
-    public void deposit( ATM person1) {
-        System.out.println("Please enter how much you want to add!");
-        Scanner scanner = new Scanner(System.in);
-        person1.ds = Integer.parseInt(scanner.nextLine());
-        person1.money += person1.ds;
+    public void deposit(ATM person1) {
+    	String input;
+    	Scanner scanner = new Scanner(System.in);
+    	while(true) {
+        	System.out.println("Please enter how much you want to add!");
+        	input = scanner.nextLine();
+        	if(input.matches("\\d+")) {
+        		person1.ds = Integer.parseInt(input);
+        		break;
+        	}
+        	else {
+        		System.out.println("Wrong data");
+        		}
+        	}
+    	person1.money += person1.ds;
     }
 
 	public int getMoney() {
@@ -139,7 +149,7 @@ public class ATM {
             File file = new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt");
             Scanner scanner = new Scanner(file);
             int money = scanner.nextInt();
-            scanner.close();
+            
             return money;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -150,10 +160,10 @@ public class ATM {
 	public static void main(String[] args) {
 		int money;
 		 ATM person1 = new  ATM("", 0, 0, 0);
-		if (new File("notes.txt").exists()) {
+		if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
              
 			money = read_note();
-             person1 = new  ATM("7777", money, 0, 0);
+            person1 = new  ATM("7777", money, 0, 0);
         } else {
         	  person1 = new  ATM("7777", 120, 0, 0);
         } 
@@ -225,6 +235,8 @@ public class ATM {
 	
 
 }
+
+
 
 
 
