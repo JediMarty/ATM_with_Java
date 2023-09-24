@@ -158,6 +158,7 @@ public class ATM {
     }
 	
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		int money;
 		 ATM person1 = new  ATM("", 0, 0, 0);
 		if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
@@ -173,7 +174,6 @@ public class ATM {
         while (!card) {
             System.out.println("\t\tATM");
             System.out.println("\tPlease enter your pincode!");
-            Scanner scanner = new Scanner(System.in);
             String enter = scanner.nextLine().toLowerCase();
             if (enter.equals("7777")) {
                 card = true;
@@ -181,13 +181,13 @@ public class ATM {
                 System.out.println("Wrong pincode!");
             }
         }
+        
         boolean flag = false;
         while (!flag) {
             System.out.println("\t\tPlease choose service");
             System.out.println("1: Withdrawal");
             System.out.println("2: Deposit");
             System.out.println("3: Balance Inquiry");
-            Scanner scanner = new Scanner(System.in);
             choice = scanner.nextLine();
             switch (choice) {
                 case "1":
@@ -212,7 +212,6 @@ public class ATM {
         while (!(choice3.equals("Y") || choice3.equals("N"))) {
             System.out.println("Would you like a note ?");
             System.out.println("Y/N");
-            Scanner scanner = new Scanner(System.in);
             choice3 = scanner.nextLine().toUpperCase();
         }
         if (choice3.equals("Y")) {
@@ -230,12 +229,12 @@ public class ATM {
             person1.saves_note(person1);
             System.out.println("Have a nice day!");
         }
+        scanner.close();
     }
 		
 	
 
 }
-
 
 
 
