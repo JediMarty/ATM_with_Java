@@ -8,19 +8,31 @@ import java.io.IOException;
 
 public class ATM {
 
-	private String pincode;
+    private String pincode;
     private int money;
     private int ds;
     private int value;
+    
+    public int getMoney() {
+		return money;
+	}
 
-    public  ATM(String pincode, int money, int ds, int value) {
+	public int getValue() {
+		return value;
+	}
+
+	public int getDs() {
+		return ds;
+	}
+	
+	public ATM(String pincode, int money, int ds, int value) {
         this.pincode = pincode;
         this.money = money;
         this.ds = ds;
         this.value = value;
     }
 
-    public void withdrawal( ATM person1) {
+    public void withdrawal(ATM person1) {
         System.out.println("\t\tPlease choose how much you want to withdrawal!");
         System.out.println("1: 20 lv");
         System.out.println("2: 40 lv");
@@ -80,24 +92,7 @@ public class ATM {
         	}
     	person1.money += person1.ds;
     }
-
-	public int getMoney() {
-		// TODO Auto-generated method stub
-		return money;
-	}
-
-	public int getValue() {
-		// TODO Auto-generated method stub
-		return value;
-	}
-
-	public int getDs() {
-		// TODO Auto-generated method stub
-		return ds;
-	}
-
-
-
+    
     public static void Balance_Inquiry( ATM person1) {
         System.out.println("Your balance is " + person1.getMoney() + " leva");
     }
