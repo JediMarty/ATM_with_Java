@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ATM {
 
-    private String pincode;
+	private String pincode;
     private int money;
     private int ds;
     private int value;
@@ -93,11 +93,11 @@ public class ATM {
     	person1.money += person1.ds;
     }
     
-    public static void Balance_Inquiry( ATM person1) {
+    public void Balance_Inquiry( ATM person1) {
         System.out.println("Your balance is " + person1.getMoney() + " leva");
     }
 
-    public static void note_w( ATM person1) {
+    public void note_w( ATM person1) {
         try {
             FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/note.txt");
             file.write("Withdrawal: " + person1.getValue() + "\n");
@@ -108,7 +108,7 @@ public class ATM {
         }
     }
 
-    public static void note_D( ATM person1) {
+    public void note_D( ATM person1) {
         try {
             FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/note.txt");
             file.write("Deposit: " + person1.getDs() + "\n");
@@ -119,7 +119,7 @@ public class ATM {
         }
     }
 
-    public static void note_BI( ATM person1) {
+    public void note_BI( ATM person1) {
         try {
             FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/note.txt");
             file.write("Balance Inquiry: " + person1.getMoney());
@@ -129,7 +129,7 @@ public class ATM {
         }
     }
 
-    public static void saves_note( ATM person1) {
+    public void saves_note( ATM person1) {
         try {
             FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/notes.txt");
             file.write(String.valueOf(person1.getMoney()));
@@ -139,7 +139,7 @@ public class ATM {
         }
     }
 
-    public static int read_note() {
+    public int read_note() {
         try {
             File file = new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt");
             Scanner scanner = new Scanner(file);
@@ -158,7 +158,7 @@ public class ATM {
 		 ATM person1 = new  ATM("", 0, 0, 0);
 		if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
              
-			money = read_note();
+			money = person1.read_note();
             person1 = new  ATM("7777", money, 0, 0);
         } else {
         	  person1 = new  ATM("7777", 120, 0, 0);
@@ -230,10 +230,4 @@ public class ATM {
 	
 
 }
-
-
-
-
-
-
 
