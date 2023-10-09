@@ -78,6 +78,7 @@ public class ATM {
                 person1.money -= person1.value;
                 break;
         }
+	      scanner.close();
     }
 
     public void deposit(ATM person1) {
@@ -95,6 +96,7 @@ public class ATM {
         		}
         	}
     	person1.money += person1.ds;
+	      scanner.close();
     }
     
     public void Balance_Inquiry( ATM person1) {
