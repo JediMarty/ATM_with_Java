@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ATM {
 
-	private String pincode;
+   private String pincode;
     private int money;
     private int ds;
     private int value;
