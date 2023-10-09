@@ -13,16 +13,20 @@ public class ATM {
     private int ds;
     private int value;
     
+    public String getPincode() {
+    	return pincode;
+    }
+    
     public int getMoney() {
 		return money;
 	}
 
-	public int getValue() {
-		return value;
-	}
-
 	public int getDs() {
 		return ds;
+	}
+	
+	public int getValue() {
+		return value;
 	}
 	
 	public ATM(String pincode, int money, int ds, int value) {
@@ -161,7 +165,7 @@ public class ATM {
 			money = person1.read_note();
             person1 = new  ATM("7777", money, 0, 0);
         } else {
-        	  person1 = new  ATM("7777", 120, 0, 0);
+        	  person1 = new  ATM("7777", 0, 0, 0);
         } 
 		 String choice3 = "";
 		 String choice = "";
@@ -169,8 +173,8 @@ public class ATM {
         while (!card) {
             System.out.println("\t\tATM");
             System.out.println("\tPlease enter your pincode!");
-            String enter = scanner.nextLine().toLowerCase();
-            if (enter.equals("7777")) {
+            String enter = scanner.nextLine();
+            if (enter.equals(person1.getPincode())) {
                 card = true;
             } else {
                 System.out.println("Wrong pincode!");
