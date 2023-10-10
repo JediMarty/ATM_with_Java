@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ATM {
 
-   private String pincode;
+	private String pincode;
     private int money;
     private int ds;
     private int value;
@@ -78,7 +78,6 @@ public class ATM {
                 person1.money -= person1.value;
                 break;
         }
-	      scanner.close();
     }
 
     public void deposit(ATM person1) {
@@ -96,7 +95,6 @@ public class ATM {
         		}
         	}
     	person1.money += person1.ds;
-	      scanner.close();
     }
     
     public void Balance_Inquiry( ATM person1) {
@@ -210,7 +208,7 @@ public class ATM {
             }
         }
        
-        while (!(choice3.equals("Y") || choice3.equals("N"))) {
+        while (!(choice3.equals("Y") || choice3.equals("N"))) { //law of De Morgan
             System.out.println("Would you like a note ?");
             System.out.println("Y/N");
             choice3 = scanner.nextLine().toUpperCase();
@@ -236,4 +234,6 @@ public class ATM {
 	
 
 }
+
+
 
