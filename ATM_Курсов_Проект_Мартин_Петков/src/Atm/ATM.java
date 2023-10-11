@@ -159,7 +159,8 @@ public class ATM {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int money;
-		 ATM person1 = new  ATM("", 0, 0, 0);
+		int cout=3;
+		ATM person1 = new  ATM("", 0, 0, 0);
 		if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
              
 			money = person1.read_note();
@@ -178,6 +179,11 @@ public class ATM {
                 card = true;
             } else {
                 System.out.println("Wrong pincode!");
+                cout-=1;
+                }
+            if (cout == 0) {
+            	System.out.println("Too many wrong Pins, please try again later..."); 
+            	System.exit(0); 
             }
         }
         
@@ -230,6 +236,12 @@ public class ATM {
         }
         scanner.close();
     }
+		
+	
+
+}
+
+
 		
 	
 
