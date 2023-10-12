@@ -239,16 +239,19 @@ public class ATM {
             System.out.println("Y/N");
             choice3 = scanner.nextLine().toUpperCase();
         }
-        if (choice3.equals("Y")) {
+       if (choice3.equals("Y")) {
             if (choice.equals("1")) {
                 person1.note_w(person1);
                 person1.saves_note(person1);
+                System.out.println("Have a nice day!");
             } else if (choice.equals("2")) {
                 person1.note_D(person1);
                 person1.saves_note(person1);
+                System.out.println("Have a nice day!");
             } else {
                 person1.note_BI(person1);
                 person1.saves_note(person1);
+                System.out.println("Have a nice day!");
             }
         } else {
             person1.saves_note(person1);
@@ -257,6 +260,11 @@ public class ATM {
         scanner.close();
     }
 		
+	
+
+}
+
+
 	
 
 }
