@@ -37,6 +37,10 @@ public class ATM {
     }
 
     public void withdrawal(ATM person1) {
+        Boolean flag = false;
+        String choice2;
+        Scanner scanner = new Scanner(System.in);
+        while(!flag) {
         System.out.println("\t\tPlease choose how much you want to withdrawal!");
         System.out.println("1: 20 lv");
         System.out.println("2: 40 lv");
@@ -45,39 +49,55 @@ public class ATM {
         System.out.println("5: 100 lv");
         System.out.println("6: 200 lv");
         System.out.println("7: Custom amount");
-        Scanner scanner = new Scanner(System.in);
-        String choice2 = scanner.nextLine();
+        System.out.println("8: Exit");
+       
+        choice2 = scanner.nextLine();
+        
         switch (choice2) {
             case "1":
                 person1.value = 20;
                 person1.money -= person1.value;
+                flag = true;
                 break;
             case "2":
                 person1.value = 40;
                 person1.money -= person1.value;
+                flag = true;
                 break;
             case "3":
                 person1.value = 60;
                 person1.money -= person1.value;
+                flag = true;
                 break;
             case "4":
                 person1.value = 80;
                 person1.money -= person1.value;
+                flag = true;
                 break;
             case "5":
                 person1.value = 100;
                 person1.money -= person1.value;
+                flag = true;
                 break;
             case "6":
                 person1.value = 200;
                 person1.money -= person1.value;
+                flag = true;
                 break;
             case "7":
                 System.out.println("Please enter how much you want to withdraw!");
                 person1.value = Integer.parseInt(scanner.nextLine());
                 person1.money -= person1.value;
+                flag = true;
                 break;
+            case "8":
+            	flag = true;
+                break;
+            default:
+        	   System.out.println("You inserted invalid option, please try again!");
+        	   }
         }
+        
     }
 
     public void deposit(ATM person1) {
@@ -242,7 +262,6 @@ public class ATM {
 }
 
 
-		
 	
 
 }
