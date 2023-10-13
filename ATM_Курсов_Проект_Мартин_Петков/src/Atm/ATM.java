@@ -30,7 +30,7 @@ public class ATM {
 	}
 	
 	public ATM(String pincode, int money, int ds, int value) {
-        this.pincode = pincode;
+        super.setPincode(pincode);
         this.money = money;
         this.ds = ds;
         this.value = value;
