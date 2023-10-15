@@ -4,7 +4,7 @@ class Virtual_ATM {
 	
 	private String pincode;
 	
-	public void setPincode(String pincode) {
+	public Virtual_ATM(String pincode) {
 		this.pincode = pincode;
 		}
 	
