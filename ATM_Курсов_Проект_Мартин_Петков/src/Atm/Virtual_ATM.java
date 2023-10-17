@@ -13,16 +13,7 @@ class Virtual_ATM {
     }
 	
 	public Boolean pinv(String enter,Boolean card) {
-	if (enter.equals("7777") || enter.equals("6666") || enter.equals("7676")) {
-		pincode = enter;
-		card = true;
-		return card;
-	}
-	else {
-		System.out.println("!");
-		card = false;
-		return card;
-	}
+	
 	
 	}
 
