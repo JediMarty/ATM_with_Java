@@ -6,16 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ATM {
+public class ATM extends Virtual_ATM{
 
-	private String pincode;
+	
     private int money;
     private int ds;
     private int value;
-    
-    public String getPincode() {
-    	return pincode;
-    }
     
     public int getMoney() {
 		return money;
@@ -85,9 +81,18 @@ public class ATM {
                 flag = true;
                 break;
             case "7":
-                System.out.println("Please enter how much you want to withdraw!");
-                person1.value = Integer.parseInt(scanner.nextLine());
+                while(true) {
+            	System.out.println("Please enter how much you want to withdraw!");
+                String scan_value = scanner.nextLine();
+                if(scan_value.matches("\\d+")) {
+                person1.value = Integer.parseInt(scan_value);
                 person1.money -= person1.value;
+                break;
+                }
+                else {
+            		System.out.println("Wrong data");
+            		}
+                }
                 flag = true;
                 break;
             case "8":
@@ -115,6 +120,7 @@ public class ATM {
         		}
         	}
     	person1.money += person1.ds;
+    	
     }
     
     public void Balance_Inquiry( ATM person1) {
@@ -153,58 +159,33 @@ public class ATM {
         }
     }
 
-    public void saves_note( ATM person1) {
-        try {
-            FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/notes.txt");
-            file.write(String.valueOf(person1.getMoney()));
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+ 
 
-    public int read_note() {
-        try {
-            File file = new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt");
-            Scanner scanner = new Scanner(file);
-            int money = scanner.nextInt();
-            
-            return money;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
+   
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		int money;
+		int money=0;
 		int cout=3;
-		ATM person1 = new  ATM("", 0, 0, 0);
-		if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
-             
-			money = person1.read_note();
-            person1 = new  ATM("7777", money, 0, 0);
-        } else {
-        	  person1 = new  ATM("7777", 0, 0, 0);
-        } 
-		 String choice3 = "";
-		 String choice = "";
+		ATM person1 = new ATM("", 0, 0, 0);
+		
+		
+		String choice3 = "";
+		String choice = "";
 		boolean card = false;
         while (!card) {
             System.out.println("\t\tATM");
             System.out.println("\tPlease enter your pincode!");
             String enter = scanner.nextLine();
-            if (enter.equals(person1.getPincode())) {
-                card = true;
-            } else {
-                System.out.println("Wrong pincode!");
-                cout-=1;
-                }
-            if (cout == 0) {
-            	System.out.println("Too many wrong Pins, please try again later..."); 
-            	System.exit(0); 
-            }
+            card = person1.pinv(enter,card);
+            
+        }
+        
+        if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
+			money = person1.read_note(person1,money);
+            person1 = new ATM(person1.getPincode(), money, 0, 0);
+        } else {
+        	person1 = new ATM("", 0, 0, 0);
         }
         
         boolean flag = false;
@@ -239,7 +220,7 @@ public class ATM {
             System.out.println("Y/N");
             choice3 = scanner.nextLine().toUpperCase();
         }
-       if (choice3.equals("Y")) {
+        if (choice3.equals("Y")) {
             if (choice.equals("1")) {
                 person1.note_w(person1);
                 person1.saves_note(person1);
@@ -265,14 +246,6 @@ public class ATM {
 }
 
 
-	
-
-}
-
-
-	
-
-}
 
 
 
