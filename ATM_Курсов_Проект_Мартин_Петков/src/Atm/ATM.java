@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class ATM extends Virtual_ATM{
 
-	
     private int money;
     private int ds;
     private int value;
@@ -169,7 +168,6 @@ public class ATM extends Virtual_ATM{
 		int cout=3;
 		ATM person1 = new ATM("", 0, 0, 0);
 		
-		
 		String choice3 = "";
 		String choice = "";
 		boolean card = false;
@@ -182,7 +180,7 @@ public class ATM extends Virtual_ATM{
         }
         
         if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
-			money = person1.read_note(person1,money);
+	    money = person1.read_note(person1,money);
             person1 = new ATM(person1.getPincode(), money, 0, 0);
         } else {
         	person1 = new ATM("", 0, 0, 0);
