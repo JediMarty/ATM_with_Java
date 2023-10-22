@@ -21,11 +21,11 @@ class Virtual_ATM {
     }
 	
 	public Boolean pinv(String enter,Boolean card) {
-	
+	int cout = 3;
 		 try {
 	            File file = new File("c:/Users/Admin/Desktop/gits/ATM/notess.txt");
 	            Scanner scanner = new Scanner(file);
-	            while(scanner.hasNext()) {
+	            while(scanner.hasNext() || cout!=0) {
 	            if (enter.equals(scanner.next())) {
 	        		pincode = enter;
 	        		card = true;
@@ -39,8 +39,8 @@ class Virtual_ATM {
 	            }
 	            
 	        	else {
-	        		System.out.println("!");
-	        		
+	        		System.out.println("Wrong pin, please try again!");
+	        		cout-=1;
 	        	    
 	        	}
 	            }  
