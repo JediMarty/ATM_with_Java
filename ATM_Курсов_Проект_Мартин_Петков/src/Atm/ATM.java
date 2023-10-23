@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class ATM extends Virtual_ATM{
 
+	
     private int money;
     private int ds;
     private int value;
@@ -31,9 +32,21 @@ public class ATM extends Virtual_ATM{
         this.value = value;
     }
 
+	public int availability(ATM person1) {
+		if (person1.money < person1.value) {
+			System.out.println("no"); 
+			System.exit(0);
+		}
+		
+		return person1.money;
+		
+	}
+	
+	
     public void withdrawal(ATM person1) {
         Boolean flag = false;
         String choice2;
+        String scan_value;
         Scanner scanner = new Scanner(System.in);
         while(!flag) {
         System.out.println("\t\tPlease choose how much you want to withdrawal!");
@@ -51,40 +64,47 @@ public class ATM extends Virtual_ATM{
         switch (choice2) {
             case "1":
                 person1.value = 20;
+                person1.availability(person1);
                 person1.money -= person1.value;
                 flag = true;
                 break;
             case "2":
                 person1.value = 40;
+                person1.availability(person1);
                 person1.money -= person1.value;
                 flag = true;
                 break;
             case "3":
                 person1.value = 60;
+                person1.availability(person1);
                 person1.money -= person1.value;
                 flag = true;
                 break;
             case "4":
                 person1.value = 80;
+                person1.availability(person1);
                 person1.money -= person1.value;
                 flag = true;
                 break;
             case "5":
                 person1.value = 100;
+                person1.availability(person1);
                 person1.money -= person1.value;
                 flag = true;
                 break;
             case "6":
                 person1.value = 200;
+                person1.availability(person1);
                 person1.money -= person1.value;
                 flag = true;
                 break;
             case "7":
                 while(true) {
             	System.out.println("Please enter how much you want to withdraw!");
-                String scan_value = scanner.nextLine();
+                scan_value = scanner.nextLine();
                 if(scan_value.matches("\\d+")) {
                 person1.value = Integer.parseInt(scan_value);
+                person1.availability(person1);
                 person1.money -= person1.value;
                 break;
                 }
@@ -128,7 +148,7 @@ public class ATM extends Virtual_ATM{
 
     public void note_w( ATM person1) {
         try {
-            FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/note.txt");
+            FileWriter file = new FileWriter("e:/eclipse/eclipse workspace/note.txt");
             file.write("Withdrawal: " + person1.getValue() + "\n");
             file.write("Balance Inquiry: " + person1.getMoney());
             file.close();
@@ -139,7 +159,7 @@ public class ATM extends Virtual_ATM{
 
     public void note_D( ATM person1) {
         try {
-            FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/note.txt");
+            FileWriter file = new FileWriter("e:/eclipse/eclipse workspace/note.txt");
             file.write("Deposit: " + person1.getDs() + "\n");
             file.write("Balance Inquiry: " + person1.getMoney());
             file.close();
@@ -150,7 +170,7 @@ public class ATM extends Virtual_ATM{
 
     public void note_BI( ATM person1) {
         try {
-            FileWriter file = new FileWriter("c:/Users/Admin/Desktop/gits/ATM/note.txt");
+            FileWriter file = new FileWriter("e:/eclipse/eclipse workspace/note.txt");
             file.write("Balance Inquiry: " + person1.getMoney());
             file.close();
         } catch (IOException e) {
@@ -166,12 +186,13 @@ public class ATM extends Virtual_ATM{
 		Scanner scanner = new Scanner(System.in);
 		int money=0;
 		int cout=3;
-		ATM person1 = new ATM("", 0, 0, 0);
-		
 		String choice3 = "";
 		String choice = "";
 		boolean card = false;
-        while (!card) {
+        
+		ATM person1 = new ATM("", 0, 0, 0);
+		
+		while (!card) {
             System.out.println("\t\tATM");
             System.out.println("\tPlease enter your pincode!");
             String enter = scanner.nextLine();
@@ -179,8 +200,8 @@ public class ATM extends Virtual_ATM{
             
         }
         
-        if (new File("c:/Users/Admin/Desktop/gits/ATM/notes.txt").exists()) {
-	    money = person1.read_note(person1,money);
+        if (new File("e:/eclipse/eclipse workspace/notes.txt").exists()) {
+			money = person1.read_note(person1,money);
             person1 = new ATM(person1.getPincode(), money, 0, 0);
         } else {
         	person1 = new ATM("", 0, 0, 0);
@@ -242,7 +263,6 @@ public class ATM extends Virtual_ATM{
 	
 
 }
-
 
 
 
