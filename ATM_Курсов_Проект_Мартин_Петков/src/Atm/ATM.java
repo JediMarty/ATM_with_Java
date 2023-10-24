@@ -2,7 +2,6 @@ package Atm;
 
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -177,26 +176,30 @@ public class ATM extends Virtual_ATM{
             e.printStackTrace();
         }
     }
-
- 
-
-   
-	
-	public static void main(String[] args) {
+    
+    public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int money=0;
-		int cout=3;
+		int cout = 3;
 		String choice3 = "";
 		String choice = "";
 		boolean card = false;
         
 		ATM person1 = new ATM("", 0, 0, 0);
 		
-		while (!card) {
+		while (true) {
             System.out.println("\t\tATM");
             System.out.println("\tPlease enter your pincode!");
             String enter = scanner.nextLine();
             card = person1.pinv(enter,card);
+            if (card == true) {
+            	break;
+            }
+            cout-=1;
+            if (cout == 0) {
+            	System.out.println("Too many wrong Pins, please try again later..."); 
+            	System.exit(0); 
+            }
             
         }
         
@@ -263,6 +266,7 @@ public class ATM extends Virtual_ATM{
 	
 
 }
+
 
 
 
